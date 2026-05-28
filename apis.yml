@@ -1,0 +1,32 @@
+aid: paralelo-bo
+name: paralelo.bo
+description: "Bolivia parallel-market USD/BOB exchange rate, aggregated from P2P sources every 60s"
+url: https://paralelo.bo/api
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Currency Exchange"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Currency Exchange
+  - Public APIs
+apis:
+  - name: paralelo.bo
+    description: "Bolivia parallel-market USD/BOB exchange rate, aggregated from P2P sources every 60s"
+    humanURL: https://paralelo.bo/api
+    baseURL: https://paralelo.bo/api
+    tags:
+      - Currency Exchange
+    properties:
+      - type: Documentation
+        url: https://paralelo.bo/api
+common:
+  - type: Website
+    url: https://paralelo.bo/api
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
