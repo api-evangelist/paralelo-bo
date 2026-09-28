@@ -16,14 +16,25 @@ deployment:
 tools_count: 5
 tools:
 - name: get_current_rate
-  description: ''
+  description: Returns the current Bolivia parallel-market USD/BOB rate, aggregated from all tracked P2P
+    exchanges. Median, buy, sell, spread percentage, source count, and ISO timestamp. Updated every 60
+    seconds.
 - name: get_historical_rate
-  description: ''
+  description: Returns the parallel-market rate on a specific date, or the most recent available date
+    before it. Daily resolution from 2024-01-01 to present. Date must be ISO format (YYYY-MM-DD).
 - name: compare_exchanges
-  description: ''
+  description: Returns the per-source breakdown of current quotes across the tracked P2P exchanges, including
+    each exchange's median buy, median sell, internal spread, and observation count. Use this to identify
+    which exchange offers the best price right
 - name: get_bank_limits
-  description: ''
+  description: Returns information about Bolivian banks that issue international debit/credit cards used
+    for online purchases (Amazon, AliExpress, etc.). Pass a slug to get a specific bank, or omit to list
+    all. Each entry includes the canonical paralelo.b
 - name: convert_currency
-  description: ''
+  description: Converts an amount between BOB and USD. Use direction=parallel for the P2P parallel rate
+    (default) or direction=official for the BCB's Tipo de Cambio Oficial (TCO), which has floated since
+    26/06/2026 and is republished every business day —
 tools_source: live tools/list via initialize handshake, 2026-09-12 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
