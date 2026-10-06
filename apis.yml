@@ -27,7 +27,7 @@ description: "Bolivia parallel-market USD/BOB exchange rate, aggregated from P2P
 url: https://paralelo.bo/api
 specificationVersion: '0.23'
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-10-06'
 x-source: public-apis/public-apis
 x-category: "Currency Exchange"
 x-tier: 3
@@ -46,6 +46,8 @@ apis:
       - type: Documentation
         url: https://paralelo.bo/api
 common:
+  - url: https://paralelo.bo/feed.xml
+    type: BlogRSS
   - type: DomainSecurity
     url: security/paralelo-bo-domain-security.yml
   - type: Website
