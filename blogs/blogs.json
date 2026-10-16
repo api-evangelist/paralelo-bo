@@ -1,0 +1,14 @@
+{
+  "repo": "paralelo-bo",
+  "feeds": [
+    {
+      "source": "https://paralelo.bo/feed.xml",
+      "feed_url": "https://paralelo.bo/feed.xml",
+      "title": "",
+      "saved": 8,
+      "method": "feed"
+    }
+  ],
+  "post_count": 8,
+  "fetched": "2026-10-10T13:15:00Z"
+}
