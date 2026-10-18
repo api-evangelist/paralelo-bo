@@ -33,6 +33,10 @@ x-category: "Currency Exchange"
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
 tags:
+  - Foreign Exchange
+  - Public APIs
+  - Exchange Rates
+tags_raw:
   - Currency Exchange
   - Public APIs
   - Exchange Rates
@@ -41,6 +45,8 @@ apis:
     description: "Bolivia parallel-market USD/BOB exchange rate, aggregated from P2P sources every 60s"
     humanURL: https://paralelo.bo/api
     tags:
+      - Foreign Exchange
+    tags_raw:
       - Currency Exchange
     properties:
       - type: Documentation
