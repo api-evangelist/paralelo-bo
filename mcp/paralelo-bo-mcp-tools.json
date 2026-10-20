@@ -1,0 +1,112 @@
+{
+  "endpoint": "https://paralelo.bo/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "paralelo-bo",
+    "title": "paralelo.bo — Bolivia parallel-dollar exchange rate",
+    "version": "1.0.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "get_current_rate",
+        "title": "Tipo de cambio paralelo actual",
+        "description": "Returns the current Bolivia parallel-market USD/BOB rate, aggregated from all tracked P2P exchanges. Median, buy, sell, spread percentage, source count, and ISO timestamp. Updated every 60 seconds.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "get_historical_rate",
+        "title": "Tipo de cambio histórico",
+        "description": "Returns the parallel-market rate on a specific date, or the most recent available date before it. Daily resolution from 2024-01-01 to present. Date must be ISO format (YYYY-MM-DD).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "description": "ISO date (YYYY-MM-DD)",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "date"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "compare_exchanges",
+        "title": "Comparativa entre exchanges",
+        "description": "Returns the per-source breakdown of current quotes across the tracked P2P exchanges, including each exchange's median buy, median sell, internal spread, and observation count. Use this to identify which exchange offers the best price right now.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "get_bank_limits",
+        "title": "Límites bancarios para compras al exterior",
+        "description": "Returns information about Bolivian banks that issue international debit/credit cards used for online purchases (Amazon, AliExpress, etc.). Pass a slug to get a specific bank, or omit to list all. Each entry includes the canonical paralelo.bo URL where current limits are documented.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "bank": {
+              "type": "string",
+              "description": "Optional bank slug (bcp, bisa, bnb, economico, fie, ganadero, mercantil-santa-cruz, sol, union, fortaleza, ecofuturo, prodem). Omit to list all."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "convert_currency",
+        "title": "Convertir BOB ↔ USD",
+        "description": "Converts an amount between BOB and USD. Use direction=parallel for the P2P parallel rate (default) or direction=official for the BCB's Tipo de Cambio Oficial (TCO), which has floated since 26/06/2026 and is republished every business day — it is no longer the old fixed Bs 6.96.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number",
+              "description": "Amount to convert (positive number)",
+              "exclusiveMinimum": 0
+            },
+            "from": {
+              "type": "string",
+              "enum": [
+                "USD",
+                "BOB"
+              ]
+            },
+            "to": {
+              "type": "string",
+              "enum": [
+                "USD",
+                "BOB"
+              ]
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "parallel",
+                "official"
+              ],
+              "description": "Which exchange rate to apply. Defaults to parallel (live)."
+            }
+          },
+          "required": [
+            "amount",
+            "from",
+            "to"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+}
